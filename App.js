@@ -1,4 +1,9 @@
-        //const heading = React.createElement('h1', {className:"heading"}, "hello react");
+      import React from 'react';
+      import ReactDOM from 'react-dom/client';
+      
+      
+      
+      //const heading = React.createElement('h1', {className:"heading"}, "hello react");
         const parent = React.createElement('div', {className:"parent"}, 
         [React.createElement('div', {className:"child1"},
         [React.createElement('h1', {}, "I am h1 tag"),
