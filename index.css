@@ -1,3 +1,134 @@
-.heading{
-    color:red;
+
+body{
+    margin: 0px;
+}
+/* header/navbar css */
+
+.header{
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.nav-items {
+    
+    display: flex;
+    
+    
+}
+.nav-items > li {
+    /* cursor: pointer; */
+    list-style: none;
+    padding-right: 3rem;
+    font-size: 20px;
+}
+.nav-logo{
+    width: 110px;
+}
+.nav-logo > img {
+    width: 100%;
+}
+
+
+/* body css */
+
+.filters{
+    display: flex;
+    margin-top: 50px;
+    
+}
+.search-filter{
+    margin-left: 20px;
+    
+    
+}
+.rating-filter{
+    margin-left: 30px;
+}
+
+.restros-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.restro-card{
+    width: 274px;
+    height: inherit;
+    margin: 30px 0px; 
+    padding: 3px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    overflow: hidden;
+}
+
+.restro-card:hover{
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.restro-card > img {
+    width: 100%;
+    /* height: 70%; */
+    transition: all 0.8s ease-in-out;
+
+    
+   
+    
+}
+
+.restro-img:hover {
+    /* border: 2px solid red; */
+    transform: scale(1.1);
+    filter: brightness(70%);
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* shimmer- effect */
+
+.shimmer-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    background-color: #92929d;
+    width: 274px;
+    height: 182px;
+    margin: 72px auto;
+    /* adding gradients */
+    -webkit-mask: linear-gradient(120deg, #5c5a5a 25%, #0005, #000 75%) right/250% 100%;
+    /* shimmer effect animation */
+    animation: shimmer 2.5s infinite;
+    background-repeat: no-repeat;
+    
+ }
+ @keyframes shimmer {
+    100% {
+       /* setting up mask position at left side */
+       -webkit-mask-position: left
+    }
+ }
+
+
+
+/* footer css */
+
+.footer{
+    background-color: rgb(58, 57, 57);
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
 }
