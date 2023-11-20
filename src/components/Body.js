@@ -1,6 +1,8 @@
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import RestroCard from "./RestroCard";
+import { Link } from "react-router-dom";
+
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -56,7 +58,11 @@ const Body = () => {
                   const topRestro = filterRestro.filter((res) => {
                     return res?.info?.avgRating > 4;
                   });
-                  setFilterRestro(topRestro);
+
+                    
+                    setFilterRestro(topRestro);
+                
+                  
                 }}
               >
                 Top Rated Restaurants
@@ -66,9 +72,11 @@ const Body = () => {
 
           <div className="restros-container">
             {filterRestro.map((res) => (
-              <div key={res?.info?.id}>
-                <RestroCard resData={res?.info}></RestroCard>
-              </div>
+              <Link to={"/restro/"+res?.info?.id} key={res?.info?.id} >
+              
+               <RestroCard resData={res?.info}></RestroCard>
+              
+              </Link> 
             ))}
           </div>
         </div>

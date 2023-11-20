@@ -1,4 +1,11 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 const Header = () => {
+  const [signIn, setSignIn] = useState("Sign In");
+  useEffect(()=>{
+    // console.log("useEffect() called");
+  },[signIn])
   return (
     <>
       <div className="header">
@@ -10,10 +17,21 @@ const Header = () => {
         </div>
         <div>
           <ul className="nav-items">
-            <li>Home</li>
-            <li>About</li>
-            <li>Sign In</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
             <li>Cart</li>
+            <li>
+              <button
+                onClick={() => {
+                  signIn === "Sign In"
+                    ? setSignIn("Sign Out")
+                    : setSignIn("Sign In");
+                }}
+              >
+                {signIn}
+              </button>
+            </li>
+            
           </ul>
         </div>
       </div>

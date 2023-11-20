@@ -3,12 +3,17 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { createBrowserRouter , RouterProvider, Outlet} from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import RestroMenu from "./components/RestroMenu";
 
 const App = () => {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet/>
       <Footer />
     </>
   );
@@ -57,6 +62,42 @@ const App = () => {
 //     }
 
 //   //  console.log(parent)
+
+//routing
+
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <App/>,
+    children: [
+      {
+         path: "/",
+         element: <Body/>
+      },
+      {
+        path: "/about",
+        element: <About/>
+      },
+      {
+        path: "/contact-us",
+        element : <Contact/>
+      },
+      {
+        path: "/restro/:restroId",
+        element : <RestroMenu/>
+      }
+    ],
+    errorElement: <Error/>
+  },
+  // {
+  //   path: "/about",
+  //   element: <About/>
+  // },
+  // {
+  //   path: "/contact-us",
+  //   element : <Contact/>
+  // }
+])
        const root = ReactDOM.createRoot(document.getElementById('root'));
 //         //root.render(jsxHeading)
-       root.render(<App/>)
+       root.render(<RouterProvider router={appRouter}/>)
