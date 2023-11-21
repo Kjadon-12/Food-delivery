@@ -2,13 +2,14 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import RestroCard from "./RestroCard";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../customHooks/useOnlineStatus";
 
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [listOfRestro, setListOfRestro] = useState([]);
   const [filterRestro, setFilterRestro] = useState([]);
-
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -28,6 +29,16 @@ const Body = () => {
     );
     console.log(json);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection;
+      </h1>
+    );
+  
 
   return (
     <>

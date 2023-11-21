@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../customHooks/useOnlineStatus";
+
 
 const Header = () => {
   const [signIn, setSignIn] = useState("Sign In");
+  const onlineStatus = useOnlineStatus();
   useEffect(()=>{
     // console.log("useEffect() called");
   },[signIn])
@@ -17,8 +20,10 @@ const Header = () => {
         </div>
         <div>
           <ul className="nav-items">
+            <li>Status: {onlineStatus ? "🟢" : "🔴"}</li>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
+            <li><Link to="/grocery">Grocery</Link></li>
             <li>Cart</li>
             <li>
               <button

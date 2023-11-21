@@ -1,13 +1,20 @@
-import React from "react";
+import React , { Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import { createBrowserRouter , RouterProvider, Outlet} from "react-router-dom";
-import About from "./components/About";
+// import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestroMenu from "./components/RestroMenu";
+
+
+const Grocery = React.lazy(()=> import("./components/Grocery"))
+
+
+const About = React.lazy(()=> import("./components/About"))
+
 
 const App = () => {
   return (
@@ -76,16 +83,21 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About/>
+        element: (<Suspense fallback={<h1>loading screen...</h1>}><About/></Suspense>),
       },
       {
         path: "/contact-us",
         element : <Contact/>
       },
       {
+        path: "/grocery",
+        element : (<Suspense fallback={<h1>loading screen...</h1>}><Grocery/></Suspense>),
+      },
+      {
         path: "/restro/:restroId",
         element : <RestroMenu/>
-      }
+      },
+      
     ],
     errorElement: <Error/>
   },

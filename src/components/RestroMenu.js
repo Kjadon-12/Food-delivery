@@ -4,24 +4,26 @@ import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils";
+import useRestroMenu from "../customHooks/useRestroMenu";
 
 
 const RestroMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
+//   const [resInfo, setResInfo] = useState(null);
 
   let { restroId } = useParams();
   console.log(restroId);
-  useEffect(() => {
-    fetchMenuItems();
-  }, []);
-  const fetchMenuItems = async () => {
-    const data = await fetch(
-      `${MENU_API}restaurantId=${restroId}&catalog_qa=undefined&submitAction=ENTER`
-    );
-    const json = await data.json();
+  const resInfo = useRestroMenu(restroId)
+//   useEffect(() => {
+//     fetchMenuItems();
+//   }, []);
+//   const fetchMenuItems = async () => {
+//     const data = await fetch(
+//       `${MENU_API}restaurantId=${restroId}&catalog_qa=undefined&submitAction=ENTER`
+//     );
+//     const json = await data.json();
 
-    setResInfo(json.data);
-  };
+//     setResInfo(json.data);
+//   };
 
   if(resInfo===null){
     return (<Shimmer/>)
@@ -66,7 +68,7 @@ const {
 
           <h1>Food Menu</h1>
           <ol>
-          {itemCards.map((menu)=>(
+          {itemCards?.map((menu)=>(
               <li key={menu.card.info.id}>{menu.card.info.name }-RS. {menu.card.info.price/100}</li>
             ))}
           </ol>
