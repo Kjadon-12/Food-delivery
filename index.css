@@ -1,14 +1,146 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-body{
+
+.best-offers{
+    width: 85%;
+    margin: 0 auto;
+}
+
+/* .best-offers > h1{
+    margin-left: 5%;
+} */
+
+
+.labelDiscount {
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.92);
+    width: 93%;
+    position: relative;
+    top: -312px;
+    left: 6px;
+    text-align: -webkit-center;
+    font-weight: 800;
+    background-color: #5c5a5a;
+    padding: 4px;
+    }
+
+
+    .prevBtn{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+    .carousel1{
+        display: flex;
+        margin-top: 2px;
+        width: 97%;
+        overflow: hidden;
+        scroll-behavior: smooth;
+
+    }
+    .carousel1 > a{
+       
+        /* margin-left: 10px; */
+        margin-right: 12px;
+    }
+    
+    .carousel1 > a > div{
+        width: 425px;
+    height: 252px;
+        
+    }
+    .carousel1 > a >div >img{
+        /* height: 80%; */
+        width: 425px;
+    height: 252px;
+        border-radius: 20px;
+    }
+
+
+    .foodCategory{
+        display: flex;
+        margin-top: 2px;
+        margin-bottom: 68px;
+        width: 97%;
+        overflow: hidden;
+        scroll-behavior: smooth;
+       
+
+    }
+
+    .foodCategory > a{
+       
+        /* margin-left: 10px; */
+        margin-right: 12px;
+    }
+    
+    .foodCategory > a > div{
+        width: 144px;
+    height: 180px;
+        
+    }
+    .foodCategory > a >div >img{
+        /* height: 80%; */
+        /* width: 165px;
+    height: 137px; */
+    width: 100%;
+    height: 100%;
+        border-radius: 20px;
+    }
+
+
+    .topRestro{
+        display: flex;
+        margin-top: 2px;
+        margin-bottom: 68px;
+        width: 97%;
+        overflow: hidden;
+        scroll-behavior: smooth;
+       
+
+    }
+    .topRestro > a{
+       
+        /* margin-left: 10px; */
+        margin-right: 41px;
+    }
+
+    .topRestro > a > div{
+        width: 19.5rem;
+        
+    height: 180px;
+        
+    }
+    .topRestro > a >div >img{
+        /* height: 80%; */
+        /* width: 165px;
+    height: 137px; */
+    width: 100%;
+    height: 100%;
+
+        border-radius: 20px;
+    }
+
+
+ body{
     margin: 0px;
 }
-/* header/navbar css */
+/* header/navbar css*/
 
 .header{
   display: flex; 
   align-items: center;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  /* position: fixed;
+  width:100% ;
+  background-color: rgb(156, 199, 156);
+  margin-top: 0px; */
 }
 .nav-items {
     
@@ -17,7 +149,7 @@ body{
     
 }
 .nav-items > li {
-    /* cursor: pointer; */
+    cursor: pointer; 
     list-style: none;
     padding-right: 3rem;
     font-size: 20px;
@@ -56,12 +188,18 @@ a {
 }
 
 .restro-card{
-    width: 274px;
-    height: inherit;
+    width: 254px;
+    height: 27rem;
     margin: 30px 0px; 
     padding: 3px;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     overflow: hidden;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.restro-card > h4{
+    margin: 8px 0px;
 }
 
 .restro-card:hover{
@@ -69,18 +207,34 @@ a {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
+
 .restro-card > img {
     width: 100%;
-    /* height: 70%; */
+     height: 43%; 
+     border-radius: 5px;
     transition: all 0.8s ease-in-out;
 
     
    
     
 }
+.greenRating{
+    background-color: green;
+    color: white;
+    width: 23%;
+    padding: 5px;
+    border-radius: 2px;
+}
+.redRating{
+    background-color: red;
+    color: white;
+    width: 23%;
+    padding: 5px;
+    border-radius: 2px;
+}
 
 .restro-img:hover {
-    /* border: 2px solid red; */
+      
     transform: scale(1.1);
     filter: brightness(70%);
     
@@ -111,9 +265,9 @@ a {
     width: 274px;
     height: 182px;
     margin: 72px auto;
-    /* adding gradients */
+    /* adding gradients */ 
     -webkit-mask: linear-gradient(120deg, #5c5a5a 25%, #0005, #000 75%) right/250% 100%;
-    /* shimmer effect animation */
+    /* shimmer effect animation*/ 
     animation: shimmer 2.5s infinite;
     background-repeat: no-repeat;
     
@@ -125,13 +279,111 @@ a {
     }
  }
 
+/* accordion */
+
+.acco-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d3d3d8;
+    padding: 12px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-weight: bolder;
+}
+
+.acco-body{
+    background-color: #e4e4f8ce;
+    padding: 12px;
+    margin-bottom: 13px;
+}
+
+.item-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.item-menu > div > img{
+    width: 118px;
+    height: 96px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.add-btn{
+    position: relative;
+    right: 6.3rem;
+    
+    background-color: white;
+    color: green;
+    padding: 6px 30px;
+    border: none;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.description{
+    width: 80%;
+}
+
+.item-menu1{
+    width: 70%;
+}
 
 
-/* footer css */
+.item-menu >div >h2,h3,h4{
+    margin: 8px;
+}
+
+.item-menu >div >h4{
+    color: #5c5a5a;
+}
+
+.acco-list{
+    width: 69%;
+    margin: 0 auto;
+}
+
+.menu-restro{
+    text-align: center;
+}
+
+/* CSS */
+.accordion-content {
+    display: none; /* Initially hide content */
+  }
+  
+  .accordion-content.open {
+    display: block; /* Show content when open */
+  }
+  
+  .accordion-content.closed {
+    display: none; /* Hide content when closed */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer css*/ 
 
 .footer{
     background-color: rgb(58, 57, 57);
     color: white;
     text-align: center;
     padding: 10px 0px;
-}
+}  

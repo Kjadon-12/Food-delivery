@@ -1,15 +1,21 @@
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
-import RestroCard from "./RestroCard";
+import RestroCard, { withOfferLabel } from "./RestroCard";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
+import Main1Carousel from "./Main1Carousel";
+import Main2Carousel from "./Main2Carousel";
+import Main3Carousel from "./Main3Carousel";
 
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [listOfRestro, setListOfRestro] = useState([]);
   const [filterRestro, setFilterRestro] = useState([]);
-  
+  const [carousle , setCarousle] = useState([]);
+
+  const RestroCardPromoted = withOfferLabel(RestroCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,11 +27,13 @@ const Body = () => {
 
     const json = await data.json();
 
+    setCarousle(json)
+
     setListOfRestro(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterRestro(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     console.log(json);
   };
@@ -38,42 +46,60 @@ const Body = () => {
         Looks like you're offline!! Please check your internet connection;
       </h1>
     );
-  
 
   return (
     <>
+     <div>
+      <Main1Carousel carousleData={carousle}/>
+     </div>
+
+     <div><Main2Carousel carousleData={carousle} /></div>
+
+     <div><Main3Carousel carousleData={carousle} /></div>
+
+
+
+    
+
       {listOfRestro?.length ? (
-        <div>
-          <div className="filters">
+        <div className="best-offers">
+          <h1>Restaurants with online food delivery in Bangalore</h1>
+          <div className="filters m-10 flex">
             <div className="search-filter">
               <input
+                className="border-2 border-black bg-slate-200 ps-3"
                 type="text"
                 value={searchText}
                 onChange={(e) => {
                   setSearchText(e.target.value);
                 }}
               ></input>
-              <button onClick={()=>{
-                console.log(searchText);
-
-                const filteredRestaurant = listOfRestro.filter((res) =>
-                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                );
-  
-                setFilterRestro(filteredRestaurant);
-              }}>Search</button>
-            </div>
-            <div className="rating-filter">
               <button
+                className="border-black border-2 px-6"
+                onClick={() => {
+                  console.log(searchText);
+
+                  const filteredRestaurant = listOfRestro.filter((res) =>
+                    res.info.name
+                      .toLowerCase()
+                      .includes(searchText.toLowerCase())
+                  );
+
+                  setFilterRestro(filteredRestaurant);
+                }}
+              >
+                Search
+              </button>
+            </div>
+            <div className="rating-filter ms-10">
+              <button
+                className="border-2 border-black px-6"
                 onClick={() => {
                   const topRestro = filterRestro.filter((res) => {
                     return res?.info?.avgRating > 4;
                   });
 
-                    
-                    setFilterRestro(topRestro);
-                
-                  
+                  setFilterRestro(topRestro);
                 }}
               >
                 Top Rated Restaurants
@@ -81,13 +107,19 @@ const Body = () => {
             </div>
           </div>
 
-          <div className="restros-container">
+          <div className="restros-container flex flex-wrap">
             {filterRestro.map((res) => (
-              <Link to={"/restro/"+res?.info?.id} key={res?.info?.id} >
               
-               <RestroCard resData={res?.info}></RestroCard>
-              
-              </Link> 
+              <Link to={"/restro/" + res?.info?.id} key={res?.info?.id}>
+                {res?.info?.aggregatedDiscountInfoV2 ? (
+                  <RestroCard resData={res?.info} />
+                ): (
+                  <RestroCardPromoted resData={res?.info} />
+                  
+                ) }
+
+                {/* <RestroCard resData={res?.info}></RestroCard> */}
+              </Link>
             ))}
           </div>
         </div>
