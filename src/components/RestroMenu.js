@@ -11,7 +11,7 @@ const RestroMenu = () => {
   //   const [resInfo, setResInfo] = useState(null);
   // const [showIndex, setShowIndex] = useState(0);
 
-  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(0);
 
   const handleToggle = (index) => {
     if (expandedIndex === index) {
