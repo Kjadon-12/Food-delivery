@@ -1,18 +1,18 @@
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestroCard, { withOfferLabel } from "./RestroCard";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
 import Main1Carousel from "./Main1Carousel";
 import Main2Carousel from "./Main2Carousel";
 import Main3Carousel from "./Main3Carousel";
-
+import UserContext from "../customHooks/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [listOfRestro, setListOfRestro] = useState([]);
   const [filterRestro, setFilterRestro] = useState([]);
-  const [carousle , setCarousle] = useState([]);
+  const [carousle, setCarousle] = useState([]);
 
   const RestroCardPromoted = withOfferLabel(RestroCard);
 
@@ -27,7 +27,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    setCarousle(json)
+    setCarousle(json);
 
     setListOfRestro(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -47,19 +47,23 @@ const Body = () => {
       </h1>
     );
 
+  
+  let context = useContext(UserContext);
+  console.log(context);
+
   return (
     <>
-     <div>
-      <Main1Carousel carousleData={carousle}/>
-     </div>
+      <div>
+        <Main1Carousel carousleData={carousle} />
+      </div>
 
-     <div><Main2Carousel carousleData={carousle} /></div>
+      <div>
+        <Main2Carousel carousleData={carousle} />
+      </div>
 
-     <div><Main3Carousel carousleData={carousle} /></div>
-
-
-
-    
+      <div>
+        <Main3Carousel carousleData={carousle} />
+      </div>
 
       {listOfRestro?.length ? (
         <div className="best-offers">
@@ -105,18 +109,25 @@ const Body = () => {
                 Top Rated Restaurants
               </button>
             </div>
+
+            <input
+              type="text"
+              value={context.loggedInUser}
+              onChange={(e) => {
+              
+              context.setUserName(e.target.value);
+              }}
+            ></input>
           </div>
 
           <div className="restros-container flex flex-wrap">
             {filterRestro.map((res) => (
-              
               <Link to={"/restro/" + res?.info?.id} key={res?.info?.id}>
                 {res?.info?.aggregatedDiscountInfoV2 ? (
                   <RestroCard resData={res?.info} />
-                ): (
+                ) : (
                   <RestroCardPromoted resData={res?.info} />
-                  
-                ) }
+                )}
 
                 {/* <RestroCard resData={res?.info}></RestroCard> */}
               </Link>

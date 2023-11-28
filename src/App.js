@@ -8,6 +8,9 @@ import { createBrowserRouter , RouterProvider, Outlet} from "react-router-dom";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestroMenu from "./components/RestroMenu";
+import UserContext from "./customHooks/UserContext";
+import { useState } from "react";
+
 
 
 const Grocery = React.lazy(()=> import("./components/Grocery"))
@@ -17,11 +20,14 @@ const About = React.lazy(()=> import("./components/About"))
 
 
 const App = () => {
+  const [userName , setUserName] = useState("kanchan")
   return (
     <>
+    <UserContext.Provider value={{loggedInUser: userName , setUserName }}>
       <Header />
       <Outlet/>
       <Footer />
+      </UserContext.Provider>
     </>
   );
 };

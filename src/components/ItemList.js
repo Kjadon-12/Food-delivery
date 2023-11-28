@@ -10,7 +10,7 @@ const ItemList = ({ items }) => {
           <div key={itm.card.info.id}>
             <div className="item-menu" >
               <div className="item-menu1">
-                {itm.card.info.itemAttribute.vegClassifier === "NONVEG" ? (
+                {itm?.card?.info?.itemAttribute?.vegClassifier === "NONVEG" ? (
                   <p>🔴</p>
                 ) : (
                   <p>🟢</p>

@@ -196,6 +196,7 @@ a {
     overflow: hidden;
     padding: 5px;
     border-radius: 5px;
+    background-color: #ddd0d069;
 }
 
 .restro-card > h4{

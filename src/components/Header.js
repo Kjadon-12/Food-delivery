@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
+import UserContext from "../customHooks/UserContext";
 
 
 const Header = () => {
   const [signIn, setSignIn] = useState("Sign In");
   const onlineStatus = useOnlineStatus();
+  const loggedData = useContext(UserContext);
+  console.log(loggedData)
   useEffect(()=>{
     // console.log("useEffect() called");
   },[signIn])
@@ -36,6 +39,7 @@ const Header = () => {
                 {signIn}
               </button>
             </li>
+            <li>{loggedData.loggedInUser}</li>
             
           </ul>
         </div>
