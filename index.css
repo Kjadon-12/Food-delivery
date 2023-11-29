@@ -388,3 +388,12 @@ a {
     text-align: center;
     padding: 10px 0px;
 }  
+
+.toggle-add-btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 16px;
+    color: green;
+    cursor: pointer;
+    background-color: white;
+}

@@ -2,6 +2,8 @@ import { useState, useEffect ,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
 import UserContext from "../customHooks/UserContext";
+import { useSelector } from "react-redux";
+
 
 
 const Header = () => {
@@ -12,6 +14,9 @@ const Header = () => {
   useEffect(()=>{
     // console.log("useEffect() called");
   },[signIn])
+
+  //subscribing to the store using useselector
+  const cartItms = useSelector((store)=>store.cart.items)
   return (
     <>
       <div className="header shadow-lg flex justify-between items-center border-gray-200 border-2 bg-slate-200">
@@ -27,7 +32,7 @@ const Header = () => {
             <li className="mr-5"><Link to="/">Home</Link></li>
             <li className="mr-5" ><Link to="/about">About</Link></li>
             <li className="mr-5"><Link to="/grocery">Grocery</Link></li>
-            <li className="mr-5">Cart</li>
+            <li className="mr-5"><Link to="/cart">Cart-{cartItms.reduce((total, item) => total + item.quantity, 0)}</Link></li>
             <li className="mr-5">
               <button
                 onClick={() => {
