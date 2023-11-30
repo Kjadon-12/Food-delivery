@@ -50,7 +50,7 @@ const ItemList = ({ items }) => {
                 </h3>
                 <h4 className="description">{itm.card.info.description}</h4>
               </div>
-              <div>
+              <div style={{width: '24%' , height: '106px'}}>
                 <img src={ITM_IMG + itm.card.info.imageId}></img>
                 {cartItems.filter((item) => item.id === itm.card.info.id)
                   .length > 0 ? (
