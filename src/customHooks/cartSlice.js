@@ -25,8 +25,9 @@ const cartSlice = createSlice({
             
           },
           removeItemFromCart(state, action) {
-            const itemIdToRemove = action.payload;
-            state.items = state.items.filter(item => item.id !== itemIdToRemove);
+            const {itemId} = action.payload;
+            //console.log(itemId)
+            state.items = state.items.filter(item => item.id !== itemId);
           },
         clearCart: (state, action)=>{
             //state = [] will not change whole 

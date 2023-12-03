@@ -137,10 +137,11 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  /* position: fixed;
-  width:100% ;
-  background-color: rgb(156, 199, 156);
-  margin-top: 0px; */
+  position: sticky;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #eef5ee;
 }
 .nav-items {
     
@@ -155,7 +156,7 @@
     font-size: 20px;
 }
 .nav-logo{
-    width: 110px;
+    width: 70px;
 }
 .nav-logo > img {
     width: 100%;
@@ -402,4 +403,91 @@ a {
     border: none;
     position: relative;
     top: -1.5rem;
+}
+
+.cart-main{
+    display: flex;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #92929d;
+    width: 87%;
+    margin: 0px auto;
+}
+.account-details{
+    width: 59%;
+   
+   
+}
+.account{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 18px;
+}
+
+.cart-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.cart-details-cont {
+    height: 15vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.quant-btn{
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+    width: 66px;
+    height: 28px;
+    padding: 0px 5px;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    background-color: #71db7e;
+
+}
+
+.order-details{
+    margin-left: 5px;
+    padding: 15px;
+    background-color: white;
+    width: 41%;
+    
+}
+
+.total-pay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clrCart-btn > button{
+    text-align: center;
+    background-color: rgb(228, 92, 92);
+    color: white;
+    padding: 18px 42px;
+    border-radius: 5px;
+    margin: 20px 0;
+    border: none;
+
+}
+.clrCart-btn{
+    text-align: center;
+}
+
+.empty-cart{
+    text-align: center;
+    padding-top: 5%;
+    margin-bottom: 34px;
+}
+.empty-cart > img{
+    width: 34%;
+    height: 345px;
+    
 }

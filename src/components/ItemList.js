@@ -2,15 +2,19 @@ import React from "react";
 import { ITM_IMG } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems, updateItemQuantity , removeItemFromCart} from "../customHooks/cartSlice";
-
+import { useContext } from "react";
+import { restroContext } from "./RestroMenu";
 const ItemList = ({ items }) => {
+
+  const restroNameCart = useContext(restroContext)
+    console.log(restroNameCart)
   console.log(items);
   const dispatch = useDispatch();
   const addItemsCart = (itemInfo) => {
     console.log(itemInfo);
 
     //dispatch action
-    dispatch(addItems({ ...itemInfo, quantity: 1 }));
+    dispatch(addItems({ ...itemInfo, quantity: 1 , restroName: restroNameCart.restroName , areaName: restroNameCart.areaName }));
   };
 
   const handleQuantityChange = (itemId, operation) => {
@@ -84,6 +88,7 @@ const ItemList = ({ items }) => {
                     ADD
                   </button>
                 )}
+                 
               </div>
             </div>
 

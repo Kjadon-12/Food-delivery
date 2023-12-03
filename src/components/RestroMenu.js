@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils";
@@ -7,10 +7,16 @@ import { MENU_API } from "../utils";
 import useRestroMenu from "../customHooks/useRestroMenu";
 import FoodCategory from "./FoodCategory";
 
+
+export  const restroContext = createContext({
+  restroName : "",
+  areaName: ""
+})
+
 const RestroMenu = () => {
   //   const [resInfo, setResInfo] = useState(null);
   // const [showIndex, setShowIndex] = useState(0);
-
+ 
   const [expandedIndex, setExpandedIndex] = useState(0);
 
   const handleToggle = (index) => {
@@ -74,8 +80,10 @@ const RestroMenu = () => {
         <h1>Food Menu</h1>
       </div>
       <div>
+      <restroContext.Provider value={{ restroName: name , areaName: areaName }}>
         {categories?.map((menu, idx) => (
           // <li key={menu.card.info.id}>{menu.card.info.name }-RS. {menu.card.info.price/100}</li>
+        
           <FoodCategory
             key={idx}
             menuData={menu?.card?.card}
@@ -84,6 +92,7 @@ const RestroMenu = () => {
             
           />
         ))}
+        </restroContext.Provider>
       </div>
     </>
   );
